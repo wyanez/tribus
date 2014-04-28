@@ -20,7 +20,37 @@ LOGGING = {
         },
     },
     'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'django.request': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
         'tribus': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'scss': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'django_auth_ldap': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'SocialAuth': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'haystack': {
             'handlers': ['console'],
             'propagate': True,
             'level': 'DEBUG',

@@ -1,0 +1,8 @@
+postgresql
+slapd
+ldap-utils
+redis-server
+mongodb-server
+python-xapian
+reprepro
+curl

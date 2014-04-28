@@ -5,11 +5,12 @@ from tribus import BASEDIR
 from tribus.common.version import get_version
 
 NAME = u'Tribus'
-VERSION = (0, 1, 0, 'alpha', 0)
+VERSION = (0, 1, 0, 'alpha', 1)
 URL = u'http://git.canaima.softwarelibre.gob.ve/?p=tribus.git;a=summary'
 AUTHOR = u'Desarrolladores de Tribus'
 AUTHOR_EMAIL = u'desarrolladores@canaima.softwarelibre.gob.ve'
-DESCRIPTION = (u'Red social para la gestión de comunidades de Software Libre.'),
+DESCRIPTION = (
+    u'Red social para la gestión de comunidades de Software Libre.'),
 LICENSE = u'GPL'
 
 
@@ -20,13 +21,15 @@ if BASEDIR == '/usr/share/pyshared':
     DOCDIR = '/usr/share/doc/tribus'
     ICONDIR = '/usr/share/icons/hicolor'
     LOCALEDIR = '/usr/share/locale'
+    PACKAGECACHE = '/var/cache/tribus'
 else:
-    CONFDIR = BASEDIR+'/tribus/config'
+    CONFDIR = BASEDIR + '/tribus/config'
     BINDIR = BASEDIR
     SHAREDIR = BASEDIR
-    DOCDIR = BASEDIR+'/tribus/data/docs'
-    LOCALEDIR = BASEDIR+'/tribus/i18n'
-    ICONDIR = BASEDIR+'/tribus/data/icons'
+    DOCDIR = BASEDIR + '/tribus/data/docs'
+    LOCALEDIR = BASEDIR + '/tribus/i18n'
+    ICONDIR = BASEDIR + '/tribus/data/icons'
+    PACKAGECACHE = BASEDIR + '/packagecache'
 
 DEFAULT_CLI_OPTIONS = {
     'version': [['-v', '--version'], {
@@ -47,7 +50,7 @@ DEFAULT_CLI_OPTIONS = {
 }
 # forbidden_filename_chars = {
 #     '/':'', ':':'', 'http':'', 'file':'', 'ftp':'', '?':'', '=':'', '&':'',
-#     '-':'', '(':'', ')':'', '+':'', '-':'', '#':'', '$':'', '%':'', '@':'',
+# '-':'', '(':'', ')':'', '+':'', '-':'', '#':'', '$':'', '%':'', '@':'',
 #     '|':'', '~':'', '_':'', ',':'', ';':'', '!':''
 #     }
 

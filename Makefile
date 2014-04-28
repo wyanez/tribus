@@ -1,4 +1,23 @@
-# Makefile
+#!/usr/bin/make -f
+# -*- makefile -*-
+#
+# Copyright (C) 2013 Desarrolladores de Tribus
+#
+# This file is part of Tribus.
+#
+# Tribus is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Tribus is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 
 SHELL = sh -e
 PATH = "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
@@ -32,6 +51,24 @@ fabric:
 runserver: fabric
 
 	@$(FAB) development runserver_django
+	
+runceleryworker: fabric
+
+	@$(FAB) development runcelery_worker
+	
+runcelerydaemon: fabric
+
+	@$(FAB) development runcelery_daemon
+
+shell: fabric
+
+	@$(FAB) development shell_django
+
+prepare: fabric
+
+	@$(FAB) development build_js
+	@$(FAB) development build_css
+	
 
 syncdb: fabric
 
@@ -41,38 +78,103 @@ environment: fabric
 
 	@$(FAB) development environment
 
+
+# REPOSITORY TASKS ------------------------------------------------------
+
+create_test_repository: fabric
+	@$(FAB) development install_repository
+	@$(FAB) development select_sample_packages
+	@$(FAB) development get_sample_packages
+	@$(FAB) development index_sample_packages
+
+
+install_repository: fabric
+
+	@$(FAB) development install_repository
+
+select_samples: fabric
+
+	@$(FAB) development select_sample_packages
+
+get_samples: fabric
+
+	@$(FAB) development get_sample_packages
+	
+get_selected: fabric
+
+	@$(FAB) development get_selected
+	
+index_selected: fabric
+
+	@$(FAB) development index_selected
+
+index_samples: fabric
+
+	@$(FAB) development index_sample_packages
+	
+# -----------------------------------------------------------------------------
+
+filldb_from_local: fabric
+
+	@$(FAB) development filldb_from_local 
+	
+filldb_from_remote: fabric
+
+	@$(FAB) development filldb_from_remote
+	
+
+# INDEX TASKS -----------------------------------------------------------------
+
+rebuild_index: fabric
+
+	@$(FAB) development rebuild_index
+	
+clean_tasks: fabric
+
+	@$(FAB) development clean_tasks
+	
+# -----------------------------------------------------------------------------
+
+# TESTS TASKS -----------------------------------------------------------------
+
+wipe_repo: fabric
+
+	@$(FAB) development wipe_repo
+	
+# -----------------------------------------------------------------------------
+	
+resetdb:
+
+	@$(FAB) development resetdb
+	
 update_virtualenv: fabric
 
 	@$(FAB) development update_virtualenv
 
-update_po: fabric 
+update_catalog: fabric 
 
-	@$(FAB) development update_po
+	@$(FAB) development update_catalog
 
-create_pot: fabric
+compile_catalog: fabric 
 
-	@$(FAB) development create_pot
+	@$(FAB) development compile_catalog
 
-# snapshot: check-maintdep prepare gen-html gen-wiki gen-po clean
+init_catalog: fabric 
 
-# 	@$(MAKE) clean
-# 	@$(BASH) tools/snapshot.sh
+	@$(FAB) development init_catalog
 
-# release: check-maintdep
+extract_messages: fabric 
 
-# 	@$(BASH) tools/release.sh
+	@$(FAB) development extract_messages
 
-# deb-test-snapshot: check-maintdep
+tx_push: fabric 
 
-# 	@$(BASH) tools/buildpackage.sh test-snapshot
+	@$(FAB) development tx_push
 
-# deb-test-release: check-maintdep
+tx_pull: fabric 
 
-# 	@$(BASH) tools/buildpackage.sh test-release
+	@$(FAB) development tx_pull
 
-# deb-final-release: check-maintdep
-
-# 	@$(BASH) tools/buildpackage.sh final-release
 
 # BUILD TASKS ------------------------------------------------------------------------------
 
@@ -88,9 +190,13 @@ build_mo: fabric
 
 	@$(FAB) development build_mo
 
-build_img: fabric
+build_css: fabric
 
-	@$(FAB) development build_img
+	@$(FAB) development build_css
+
+build_js: fabric
+
+	@$(FAB) development build_js
 
 build_man: fabric
 
@@ -103,9 +209,13 @@ clean: fabric
 
 	@$(FAB) development clean
 
-clean_img: fabric
+clean_css: fabric
 
-	@$(FAB) development clean_img
+	@$(FAB) development clean_css
+
+clean_js: fabric
+
+	@$(FAB) development clean_js
 
 clean_mo: fabric
 
@@ -126,3 +236,23 @@ clean_dist: fabric
 clean_pyc: fabric
 
 	@$(FAB) development clean_pyc
+
+test: fabric
+
+	@$(FAB) development test
+
+install: fabric
+
+	@$(FAB) development install
+
+bdist: fabric
+
+	@$(FAB) development bdist
+
+sdist: fabric
+
+	@$(FAB) development sdist
+
+report_setup_data: fabric
+
+	@$(FAB) development report_setup_data

@@ -8,9 +8,6 @@ Tribus está dividido en varios paquetes de python, entre los que podemos mencio
 .. automodule:: tribus.cli
    :members:
 
-.. automodule:: tribus.gtk
-   :members:
-
 .. automodule:: tribus.web
    :members:
 
@@ -20,14 +17,8 @@ Tribus está dividido en varios paquetes de python, entre los que podemos mencio
 .. automodule:: tribus.config
    :members:
 
-.. automodule:: tribus.tests
-   :members:
-
-.. automodule:: tribus.i18n
+.. automodule:: tribus.testing
    :members:
  
 .. automodule:: tribus.data
    :members:
-
-
-

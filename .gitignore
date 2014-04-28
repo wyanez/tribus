@@ -1,9 +1,14 @@
 # Python
 *.py[cod]
 
+# PNG files
+*.png
 
 # C extensions
 *.so
+
+# Celery process id
+celerybeat.pid
 
 # Packages
 *.egg
@@ -38,6 +43,20 @@ nosetests.xml
 
 # Virtualenv
 virtualenv
+virtualenv_cache
+
+# Packagecache
+packagecache
+
+# Indices
+whoosh_index
+xapian_index
+
+# Package Samples
+package_samples
+
+# Test repository
+test_repo
 
 # Vim
 .*.s[a-w][a-z]
@@ -90,3 +109,15 @@ web_local.py
 
 # Configuración en producción de Django
 web_production.py
+
+# Javascript minificado
+tribus/data/static/js/min/
+
+# CSS minificado
+tribus/data/static/css/min/
+
+# Node package manager logs
+npm-debug.log
+
+# Compiled documentation
+tribus/data/docs/html
